@@ -9,6 +9,7 @@ import Icon from '@/components/ui/icon';
 
 export default function Index() {
   const [activeService, setActiveService] = useState(0);
+  const [activeCategory, setActiveCategory] = useState('injection');
 
   const services = [
     {
@@ -16,21 +17,48 @@ export default function Index() {
       description: "Коррекция мимических морщин в области лба, межбровья и вокруг глаз",
       price: "от 15 000 ₽",
       duration: "30-45 мин",
-      icon: "Syringe"
+      icon: "Syringe",
+      category: "injection"
     },
     {
       title: "Контурная пластика",
       description: "Увеличение объема губ и коррекция овала лица филлерами",
       price: "от 25 000 ₽", 
       duration: "45-60 мин",
-      icon: "Heart"
+      icon: "Heart",
+      category: "injection"
     },
     {
       title: "Мезотерапия",
       description: "Питание и увлажнение кожи, улучшение тонуса и эластичности",
       price: "от 8 000 ₽",
       duration: "60 мин",
-      icon: "Droplets"
+      icon: "Droplets",
+      category: "injection"
+    },
+    {
+      title: "Лазерная терапия",
+      description: "Удаление пигментации, омоложение кожи, лечение акне",
+      price: "от 12 000 ₽",
+      duration: "45-60 мин",
+      icon: "Zap",
+      category: "apparatus"
+    },
+    {
+      title: "RF-лифтинг",
+      description: "Подтяжка кожи радиочастотами, коррекция овала лица",
+      price: "от 18 000 ₽",
+      duration: "60-90 мин",
+      icon: "Radio",
+      category: "apparatus"
+    },
+    {
+      title: "Ультразвуковая терапия",
+      description: "SMAS-лифтинг, глубокое омоложение без операций",
+      price: "от 22 000 ₽",
+      duration: "90 мин",
+      icon: "Waves",
+      category: "apparatus"
     }
   ];
 
@@ -104,15 +132,15 @@ export default function Index() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <Badge className="bg-primary/10 text-primary border-primary/20">
-                Инъекционная косметология
+                Инъекционная и аппаратная косметология
               </Badge>
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
                 Естественная 
                 <span className="text-primary"> красота</span> без границ
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Профессиональные процедуры ботокса, филлеров и мезотерапии. 
-                Индивидуальный подход и гарантия результата.
+                Профессиональные инъекционные и аппаратные процедуры. 
+                Современное оборудование и индивидуальный подход к каждому пациенту.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg">
@@ -161,15 +189,40 @@ export default function Index() {
               Услуги
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Инъекционная косметология
+              Спектр услуг
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Современные процедуры для сохранения молодости и естественной красоты
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+              Инъекционная и аппаратная косметология для достижения максимального результата
             </p>
+            
+            <div className="flex justify-center mb-8">
+              <div className="flex bg-secondary/50 rounded-full p-1">
+                <button
+                  onClick={() => setActiveCategory('injection')}
+                  className={`px-6 py-2 rounded-full transition-all ${
+                    activeCategory === 'injection'
+                      ? 'bg-primary text-white shadow-md'
+                      : 'text-muted-foreground hover:text-primary'
+                  }`}
+                >
+                  Инъекционная
+                </button>
+                <button
+                  onClick={() => setActiveCategory('apparatus')}
+                  className={`px-6 py-2 rounded-full transition-all ${
+                    activeCategory === 'apparatus'
+                      ? 'bg-primary text-white shadow-md'
+                      : 'text-muted-foreground hover:text-primary'
+                  }`}
+                >
+                  Аппаратная
+                </button>
+              </div>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {services.map((service, index) => (
+            {services.filter(service => service.category === activeCategory).map((service, index) => (
               <Card 
                 key={index}
                 className="group hover:shadow-xl transition-all duration-300 cursor-pointer border-2 hover:border-primary/20"
@@ -323,12 +376,33 @@ export default function Index() {
                   </div>
                   <span className="text-xl font-bold text-primary">от 30 000 ₽</span>
                 </div>
-                <div className="flex justify-between items-center py-4">
+                <div className="flex justify-between items-center py-4 border-b border-border/50">
                   <div>
                     <h3 className="font-semibold">Мезотерапия лица</h3>
                     <p className="text-sm text-muted-foreground">1 процедура</p>
                   </div>
                   <span className="text-xl font-bold text-primary">от 8 000 ₽</span>
+                </div>
+                <div className="flex justify-between items-center py-4 border-b border-border/50">
+                  <div>
+                    <h3 className="font-semibold">Лазерная терапия</h3>
+                    <p className="text-sm text-muted-foreground">1 процедура</p>
+                  </div>
+                  <span className="text-xl font-bold text-primary">от 12 000 ₽</span>
+                </div>
+                <div className="flex justify-between items-center py-4 border-b border-border/50">
+                  <div>
+                    <h3 className="font-semibold">RF-лифтинг</h3>
+                    <p className="text-sm text-muted-foreground">1 процедура</p>
+                  </div>
+                  <span className="text-xl font-bold text-primary">от 18 000 ₽</span>
+                </div>
+                <div className="flex justify-between items-center py-4">
+                  <div>
+                    <h3 className="font-semibold">Ультразвуковая терапия</h3>
+                    <p className="text-sm text-muted-foreground">SMAS-лифтинг</p>
+                  </div>
+                  <span className="text-xl font-bold text-primary">от 22 000 ₽</span>
                 </div>
               </div>
             </Card>
