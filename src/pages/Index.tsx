@@ -59,6 +59,30 @@ export default function Index() {
       duration: "90 мин",
       icon: "Waves",
       category: "apparatus"
+    },
+    {
+      title: "Комбинированная чистка",
+      description: "Глубокое очищение пор, удаление черных точек и комедонов",
+      price: "от 4 500 ₽",
+      duration: "60-90 мин",
+      icon: "Sparkles",
+      category: "aesthetic"
+    },
+    {
+      title: "Химический пилинг",
+      description: "Обновление кожи кислотами, выравнивание тона и рельефа",
+      price: "от 6 000 ₽",
+      duration: "45 мин",
+      icon: "Layers",
+      category: "aesthetic"
+    },
+    {
+      title: "Комплексный уход",
+      description: "Увлажняющие и питательные процедуры для всех типов кожи",
+      price: "от 3 500 ₽",
+      duration: "60 мин",
+      icon: "Leaf",
+      category: "aesthetic"
     }
   ];
 
@@ -132,14 +156,14 @@ export default function Index() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <Badge className="bg-primary/10 text-primary border-primary/20">
-                Инъекционная и аппаратная косметология
+                Полный спектр косметологических услуг
               </Badge>
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
                 Естественная 
                 <span className="text-primary"> красота</span> без границ
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Профессиональные инъекционные и аппаратные процедуры. 
+                Инъекционная, аппаратная и эстетическая косметология. 
                 Современное оборудование и индивидуальный подход к каждому пациенту.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -192,14 +216,14 @@ export default function Index() {
               Спектр услуг
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-              Инъекционная и аппаратная косметология для достижения максимального результата
+              Комплексный подход: инъекционная, аппаратная и эстетическая косметология
             </p>
             
             <div className="flex justify-center mb-8">
               <div className="flex bg-secondary/50 rounded-full p-1">
                 <button
                   onClick={() => setActiveCategory('injection')}
-                  className={`px-6 py-2 rounded-full transition-all ${
+                  className={`px-4 py-2 rounded-full transition-all text-sm ${
                     activeCategory === 'injection'
                       ? 'bg-primary text-white shadow-md'
                       : 'text-muted-foreground hover:text-primary'
@@ -209,13 +233,23 @@ export default function Index() {
                 </button>
                 <button
                   onClick={() => setActiveCategory('apparatus')}
-                  className={`px-6 py-2 rounded-full transition-all ${
+                  className={`px-4 py-2 rounded-full transition-all text-sm ${
                     activeCategory === 'apparatus'
                       ? 'bg-primary text-white shadow-md'
                       : 'text-muted-foreground hover:text-primary'
                   }`}
                 >
                   Аппаратная
+                </button>
+                <button
+                  onClick={() => setActiveCategory('aesthetic')}
+                  className={`px-4 py-2 rounded-full transition-all text-sm ${
+                    activeCategory === 'aesthetic'
+                      ? 'bg-primary text-white shadow-md'
+                      : 'text-muted-foreground hover:text-primary'
+                  }`}
+                >
+                  Эстетическая
                 </button>
               </div>
             </div>
@@ -397,12 +431,33 @@ export default function Index() {
                   </div>
                   <span className="text-xl font-bold text-primary">от 18 000 ₽</span>
                 </div>
-                <div className="flex justify-between items-center py-4">
+                <div className="flex justify-between items-center py-4 border-b border-border/50">
                   <div>
                     <h3 className="font-semibold">Ультразвуковая терапия</h3>
                     <p className="text-sm text-muted-foreground">SMAS-лифтинг</p>
                   </div>
                   <span className="text-xl font-bold text-primary">от 22 000 ₽</span>
+                </div>
+                <div className="flex justify-between items-center py-4 border-b border-border/50">
+                  <div>
+                    <h3 className="font-semibold">Комбинированная чистка</h3>
+                    <p className="text-sm text-muted-foreground">1 процедура</p>
+                  </div>
+                  <span className="text-xl font-bold text-primary">от 4 500 ₽</span>
+                </div>
+                <div className="flex justify-between items-center py-4 border-b border-border/50">
+                  <div>
+                    <h3 className="font-semibold">Химический пилинг</h3>
+                    <p className="text-sm text-muted-foreground">1 процедура</p>
+                  </div>
+                  <span className="text-xl font-bold text-primary">от 6 000 ₽</span>
+                </div>
+                <div className="flex justify-between items-center py-4">
+                  <div>
+                    <h3 className="font-semibold">Комплексный уход</h3>
+                    <p className="text-sm text-muted-foreground">1 процедура</p>
+                  </div>
+                  <span className="text-xl font-bold text-primary">от 3 500 ₽</span>
                 </div>
               </div>
             </Card>
